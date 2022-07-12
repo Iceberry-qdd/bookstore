@@ -8,6 +8,10 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * 前端响应实体类
+ * @param <T> 响应的数据信息
+ */
 @ApiModel("响应实体类")
 public class ResponseVO<T> implements Serializable {
     static final long serialVersionUID = 42L;

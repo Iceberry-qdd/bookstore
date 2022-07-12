@@ -7,6 +7,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
 
+/**
+ * 书籍信息的JPA接口层
+ */
 public interface BookRepository extends JpaRepository<BookEntity, Integer> {
     @Override
     @Transactional

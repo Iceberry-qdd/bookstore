@@ -13,6 +13,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * 书籍信息持久层
+ */
 @Repository
 public class BookDao {
     List<BookModel> data = new ArrayList<>();

@@ -11,6 +11,9 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
 import java.util.List;
 
+/**
+ * 书籍信息的业务逻辑层
+ */
 @Service
 @Transactional(rollbackFor = Exception.class)
 public class BookService {

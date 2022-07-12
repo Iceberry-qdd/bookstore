@@ -3,6 +3,10 @@ package com.iceberry.starterDemo.model;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+/**
+ * 列表信息封装类，主要是为数据列表增加页数相关信息
+ * @param <T> 数据列表
+ */
 @ApiModel("列表信息封装类")
 public class ListData<T> {
     @ApiModelProperty("列表总页数")

@@ -13,10 +13,17 @@ import springfox.documentation.spring.web.plugins.Docket;
 
 import java.util.ArrayList;
 
+/**
+ * Swagger配置类
+ */
 @Configuration
 @EnableOpenApi
 public class SwaggerConfiguration implements WebMvcConfigurer {
 
+    /**
+     * 配置Swagger主接口
+     * @return Swagger主接口
+     */
     @Bean
     public Docket docket() {
         return new Docket(DocumentationType.SWAGGER_2)
@@ -30,6 +37,10 @@ public class SwaggerConfiguration implements WebMvcConfigurer {
 
     Contact contact = new Contact("Iceberry", "Iceberry.com", "qddwork@outlook.com");
 
+    /**
+     * 配置Api信息
+     * @return Api信息
+     */
     private ApiInfo apiInfo() {
         return new ApiInfo("BookStore", "The book store application's api doc.", "1.0", "iceberry.com", contact, "MIT", "https://mit-license.org/", new ArrayList<>());
     }

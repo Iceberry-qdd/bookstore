@@ -7,6 +7,9 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
+/**
+ * 书籍信息的表示层实体类
+ */
 @ApiModel(value = "书籍实体类")
 public class BookModel {
     @ApiModelProperty("书籍编号")

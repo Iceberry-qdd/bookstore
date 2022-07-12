@@ -7,6 +7,9 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import java.util.Date;
 
+/**
+ * 书籍信息的数据持久层映射类
+ */
 @Entity
 @Table(name = "tb_book_info")
 public class BookEntity {

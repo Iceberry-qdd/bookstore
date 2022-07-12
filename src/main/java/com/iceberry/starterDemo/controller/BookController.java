@@ -12,6 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
+/**
+ * 书籍信息接口
+ */
 @Api(tags = "书籍信息组")
 @RestController
 public class BookController {
@@ -29,8 +32,8 @@ public class BookController {
      */
     @ApiOperation("分页查询书籍信息")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "page", value = "带查询的页码", required = true, paramType = "path", dataType = "Integer", defaultValue = "1"),
-            @ApiImplicitParam(name = "s", value = "每页条目数量", required = true, paramType = "query", dataType = "Integer", defaultValue = "10")})
+            @ApiImplicitParam(name = "page", value = "带查询的页码", required = true, paramType = "path", dataType = "java.lang.Integer", defaultValue = "1"),
+            @ApiImplicitParam(name = "s", value = "每页条目数量", required = true, paramType = "query", dataType = "java.lang.Integer", defaultValue = "10")})
     @GetMapping("/book/{page}")
     public ResponseVO<ListData<List<BookModel>>> getBookListHandler(@PathVariable int page, @RequestParam("s") int pageSize, HttpServletRequest request, HttpServletResponse response) {
 
