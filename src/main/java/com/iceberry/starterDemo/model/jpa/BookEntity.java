@@ -15,7 +15,7 @@ public class BookEntity {
     @Comment(value = "书的编号")
     private int id;
 
-    @Column(name = "name",length = 50)
+    @Column(name = "name", length = 50)
     @Comment(value = "书的名称")
     private String name;
     @Column
