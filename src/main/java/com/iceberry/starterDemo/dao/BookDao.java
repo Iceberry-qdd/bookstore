@@ -5,9 +5,7 @@ import com.iceberry.starterDemo.model.ListData;
 import com.iceberry.starterDemo.model.jpa.BookEntity;
 import com.iceberry.starterDemo.repository.BookRepository;
 import org.springframework.beans.BeanUtils;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
@@ -30,7 +28,16 @@ public class BookDao {
      * @return 书籍列表
      */
     public ListData<List<BookEntity>> findAll(int page, int pageSize) {
-        Pageable pageable = PageRequest.of(page - 1, pageSize);
+        Sort sort = Sort.by("id").ascending();
+        Pageable pageable = PageRequest.of(page - 1, pageSize, sort);
+        while (true) {
+            Slice<BookEntity> slice = bookRepository.findAll(pageable);
+            List<BookEntity> list = slice.getContent();
+            if (!slice.hasNext()) break;
+            pageable=slice.nextPageable();
+        }
+
+
         Page<BookEntity> bookPage = bookRepository.findAll(pageable);
         List<BookEntity> bookList = bookPage.getContent();
         int totalPages = bookPage.getTotalPages();

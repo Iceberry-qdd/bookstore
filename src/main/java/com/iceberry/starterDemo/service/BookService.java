@@ -28,7 +28,7 @@ public class BookService {
     public ListData<List<BookModel>> getAll(int page, int pageSize) {
         ListData<List<BookModel>> bookModelList = new ListData<>();
         ListData<List<BookEntity>> bookEntityList = bookDao.findAll(page, pageSize);
-        BeanUtils.copyProperties(bookEntityList, bookModelList);
+        BeanUtils.copyProperties(bookEntityList, bookModelList); //XXX 此处应只拷贝bookModelList有的字段，但这里全部拷贝过来了。
         return bookModelList;
     }
 

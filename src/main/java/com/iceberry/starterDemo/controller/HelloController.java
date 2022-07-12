@@ -11,7 +11,7 @@ public class HelloController {
 
     @ApiOperation("连通性测试")
     @GetMapping("/hello")
-    public String hello() {
+    public String helloHandler() {
         return "Hello";
     }
 }
