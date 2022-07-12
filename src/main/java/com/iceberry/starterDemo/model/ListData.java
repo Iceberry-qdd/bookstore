@@ -1,10 +1,19 @@
 package com.iceberry.starterDemo.model;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel("列表信息封装类")
 public class ListData<T> {
+    @ApiModelProperty("列表总页数")
     int totalPage;
+    @ApiModelProperty("列表条目总数")
     long totalSize;
+    @ApiModelProperty("当前页数")
     int curPage;
+    @ApiModelProperty("每页条目数量")
     int pageSize;
+    @ApiModelProperty("列表数据")
     T data;
 
     public ListData(int totalPage, long totalSize, int curPage, int pageSize, T data) {

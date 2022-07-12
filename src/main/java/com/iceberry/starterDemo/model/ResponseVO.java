@@ -1,19 +1,28 @@
 package com.iceberry.starterDemo.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import java.io.Serializable;
 import java.util.Date;
 
+@ApiModel("响应实体类")
 public class ResponseVO<T> implements Serializable {
     static final long serialVersionUID = 42L;
+    @ApiModelProperty("http响应状态码")
     int statusCode;
+    @ApiModelProperty("业务响应状态码")
     int code;
+    @ApiModelProperty("响应数据")
     T data;
 
+    @ApiModelProperty("响应时间戳")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     //@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     Date timestamps;
+    @ApiModelProperty("请求路径")
     String url;
 
     public ResponseVO(int statusCode, int code, T data, String url) {

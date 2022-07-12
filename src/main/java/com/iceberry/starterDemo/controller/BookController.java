@@ -4,6 +4,7 @@ import com.iceberry.starterDemo.model.BookModel;
 import com.iceberry.starterDemo.model.ListData;
 import com.iceberry.starterDemo.model.ResponseVO;
 import com.iceberry.starterDemo.service.BookService;
+import io.swagger.annotations.*;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
+@Api(tags = "书籍信息组")
 @RestController
 public class BookController {
     @Resource(name = "bookService")
@@ -25,8 +27,9 @@ public class BookController {
      * @param response http响应对象
      * @return 响应实体类
      */
+    @ApiOperation("分页查询书籍信息")
     @GetMapping("/book/{page}")
-    public ResponseVO<ListData<List<BookModel>>> getBookList(@PathVariable int page, @RequestParam("s") int pageSize, HttpServletRequest request, HttpServletResponse response) {
+    public ResponseVO<ListData<List<BookModel>>> getBookList(@ApiParam("待查询的页码") @PathVariable int page, @ApiParam("每页条目数量") @RequestParam("s") int pageSize, HttpServletRequest request, HttpServletResponse response) {
 
         ListData<List<BookModel>> data = bookService.getAll(page, pageSize);
         return new ResponseVO<>(HttpServletResponse.SC_OK, 0, data, request.getRequestURI());
@@ -40,8 +43,9 @@ public class BookController {
      * @param response  http响应对象
      * @return 响应实体类
      */
+    @ApiOperation("新增单个书籍信息")
     @PutMapping("/book")
-    public ResponseVO<BookModel> createOneBook(@RequestBody BookModel bookModel, HttpServletRequest request, HttpServletResponse response) {
+    public ResponseVO<BookModel> createOneBook(@ApiParam("待新增的书籍信息实体") @RequestBody BookModel bookModel, HttpServletRequest request, HttpServletResponse response) {
         BookModel data = bookService.insertOne(bookModel);
         return new ResponseVO<>(HttpServletResponse.SC_OK, 0, data, request.getRequestURI());
     }
@@ -54,8 +58,9 @@ public class BookController {
      * @param response  http响应对象
      * @return 响应实体类
      */
+    @ApiOperation("修改单个书籍信息")
     @PostMapping("/book")
-    public ResponseVO<BookModel> updateOneBook(@RequestBody BookModel bookModel, HttpServletRequest request, HttpServletResponse response) {
+    public ResponseVO<BookModel> updateOneBook(@ApiParam("待修改的书籍信息实体") @RequestBody BookModel bookModel, HttpServletRequest request, HttpServletResponse response) {
         BookModel data = bookService.updateOne(bookModel);
         return new ResponseVO<>(HttpServletResponse.SC_OK, 0, data, request.getRequestURI());
     }
@@ -68,8 +73,9 @@ public class BookController {
      * @param response  http响应对象
      * @return 响应实体类
      */
+    @ApiOperation("删除单个书籍信息")
     @DeleteMapping("/book")
-    public ResponseVO<BookModel> deleteOneBook(@RequestBody BookModel bookModel, HttpServletRequest request, HttpServletResponse response) {
+    public ResponseVO<BookModel> deleteOneBook(@ApiParam("待删除的书籍信息实体") @RequestBody BookModel bookModel, HttpServletRequest request, HttpServletResponse response) {
         BookModel data = bookService.deleteOne(bookModel);
         return new ResponseVO<>(HttpServletResponse.SC_OK, 0, data, request.getRequestURI());
     }
